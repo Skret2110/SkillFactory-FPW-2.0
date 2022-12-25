@@ -3,20 +3,21 @@ winning_combinations = [
     (1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 5, 9), (3, 5, 7),
     (1, 4, 7), (2, 5, 8), (3, 6, 9)
 ]
-
+name_x = input("Введите имя игрока Х")
+name_o = input("Введите имя игрока О")
 
 def draw_field():
-    print('-------------')
+    print('-' * 13)
     for i in range(3):
-        print('|', field[0 + i * 3], '|', field[1 + i * 3], '|', field[2 + i * 3], "|")
-        print("-------------")
+        print(f'|', field[0 + i * 3], '|', field[1 + i * 3], '|', field[2 + i * 3], "|")
+        print("-" * 13)
 
 
 def take_input(player_sign):
     while True:
         value = input("Куда ставить:" + player_sign + "?")
         if not (value in '123456789'):
-            print("Ошибка ввода, поле игры от 1 до 9! ПОвторите ввод")
+            print("Ошибка ввода, поле игры от 1 до 9! Повторите ввод")
             continue
         value = int(value)
         if str(field[value - 1]) in "XO":
@@ -46,7 +47,7 @@ def main():
             winner = win_lines()
             if winner:
                 draw_field()
-                print(winner, "Выиграл")
+                print("Кто чемпион?!", winner, "чемпион!!!!")
                 break
         counter += 1
         if counter > 8:
